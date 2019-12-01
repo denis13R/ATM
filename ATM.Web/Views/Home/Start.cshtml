@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "Start";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("GetCard", "Home", FormMethod.Get))
+{
+<div class="container">
+    <div class="text-center">
+        <h1>Welcome!</h1>
+    </div>
+    <hr />
+    <div class="text-center">
+        <p>Input a card number:</p>
+        <p>@Html.TextBox("cardNumWithDashes")</p>
+        @Html.Hidden("cardNum")
+    </div>
+    <div class="navbar-btn text-center">
+        <p class="text-center">
+            <input type="button" class="btn btn-default digit" id="1" value="1" />
+            <input type="button" class="btn btn-default digit" id="2" value="2" />
+            <input type="button" class="btn btn-default digit" id="3" value="3" />
+        </p>
+        <p class="text-center">
+            <input type="button" class="btn btn-default digit" id="4" value="4" />
+            <input type="button" class="btn btn-default digit" id="5" value="5" />
+            <input type="button" class="btn btn-default digit" id="6" value="6" />
+        </p>
+        <p class="text-center">
+            <input type="button" class="btn btn-default digit" id="7" value="7" />
+            <input type="button" class="btn btn-default digit" id="8" value="8" />
+            <input type="button" class="btn btn-default digit" id="9" value="9" />
+        </p>
+        <p class="text-center">
+            <input type="button" class="btn btn-default digit" id="0" value="0" />
+        </p>
+    </div>
+    <div class="navbar-btn col-xs-2 col-xs-offset-5 text-center">
+        <input type="submit" id="submit-card-num" class="btn btn-primary btn-large btn-block" value="OK" />
+        @Html.ActionLink("Clear", "InputCard", "Home", null, new { @class = "btn btn-default btn-large btn-block" })
+    </div>
+</div>
+
+    <script type="text/javascript">
+
+        $('.digit').click(function (e) {
+            var cardNumWithDashes = $('#cardNumWithDashes').val();
+            var cardNum = cardNumWithDashes.split('-').join('');
+            console.log(cardNum.length);
+
+            if (cardNum.length === 16) {
+                return false;
+            }
+
+            cardNumWithDashes += e.currentTarget.id;
+            cardNum += e.currentTarget.id;
+
+            if (cardNum.length > 0 && cardNum.length % 4 === 0 && cardNum.length !== 16) {
+                cardNumWithDashes += '-';
+            }
+
+            $('#cardNumWithDashes').val(cardNumWithDashes);
+            $('#cardNum').val(cardNum);
+            
+        });
+
+        $("#cardNumWithDashes").keydown(function (e) {
+            return false;
+        });
+
+        /*$("input[type='text']").keydown(function (e) {
+            var text = e.val().toString();
+            console.log(text.substring(0, text.length-1));
+        });*/
+
+    </script>
+
+}
+

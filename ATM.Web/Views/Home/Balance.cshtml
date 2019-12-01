@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Balance";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model ATM.Web.ViewModels.BalanceViewModel
+
+<div class="container">
+    <div class="text-center">
+        <h2>Balance</h2>
+    </div>
+    <hr />
+    <div class="text-center table-responsive col-xs-4 col-xs-offset-4">
+        <table class="table table-bordered table-striped table-condensed">
+            <tbody>
+                <tr>
+                    <td>Card</td>
+                    <td>@Html.DisplayFor(model => model.CardNumWithDashes)</td>
+                </tr>
+                <tr>
+                    <td>Balance</td>
+                    <td>@Html.DisplayFor(model => model.Balance)</td>
+                </tr>
+                <tr>
+                    <td>Date</td>
+                    <td>@Html.DisplayFor(model => model.Date)</td>
+                </tr>
+            </tbody>
+     </table>
+    </div>
+    <div class="navbar-btn col-xs-2 col-xs-offset-5 text-center">
+        @Html.ActionLink("Back", "Operations", "Home", new { cardNum = Model.CardNum }, new { @class = "btn btn-primary btn-large btn-block" })
+        @Html.ActionLink("Exit", "InputCard", "Home", null, new { @class = "btn btn-default btn-large btn-block" })
+    </div>
+</div>
+
+
+

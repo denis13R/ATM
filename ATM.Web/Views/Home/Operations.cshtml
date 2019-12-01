@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Operations";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model ATM.BusinessLogic.Models.CardModel
+
+<div class="container">
+    <div class="text-center">
+        <h2>Operations</h2>
+    </div>
+    <hr />
+    <div class="navbar-btn col-xs-2 col-xs-offset-5 text-center">
+        @Html.ActionLink("Check Balance", "Balance", "Home", new { cardNum = Model.CardNum }, new { @class = "btn btn-primary btn-large btn-block digit" })
+        @Html.ActionLink("Get Cash", "InputAmountOfMoney", "Home", new { cardNum = Model.CardNum }, new { @class = "btn btn-primary btn-large btn-block digit" })
+        @Html.ActionLink("Exit", "InputCard", "Home", null, new { @class = "btn btn-default btn-large btn-block" })
+    </div>
+</div>

@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Error";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model ATM.Web.ViewModels.ErrorViewModel
+
+<div class="container">
+    <div class="text-center">
+        <h1>Error</h1>
+    </div>
+    <div class="text-center">
+        <p>@Html.DisplayFor(model => model.ErrorMessage)</p>
+    </div>
+    <div class="navbar-btn col-xs-2 col-xs-offset-5 text-center">
+        @Html.ActionLink("Back", Model.BackAction, Model.BackController, new { CardNum = Model.CardNum },
+    new { @class = "btn btn-primary btn-large btn-block" })
+    </div>
+</div>
